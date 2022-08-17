@@ -4,7 +4,7 @@ import Expenses from './pages/Expenses.jsx'
 import Invoices from './pages/Invoices/Invoices.jsx'
 import InvoicesDetail from './pages/Invoices/InvoicesDetail.jsx'
 import Notfound from './pages/NotFound.jsx'
-import Book from './components/demo/Book.jsx'
+import Book from './concepts/demo/Book.jsx'
 
 
 

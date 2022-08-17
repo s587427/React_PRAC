@@ -10,7 +10,7 @@ import React, { useState, useMemo, useCallback, useEffect } from 'react'
  *          1.傳到 useMemo 的第一個參數函式會在 render 元件時執行
  *          2.記憶的值不變就不會觸發重新渲染
  *      適用時機
- *          1.不需要常常被 render 的元件或 Function
+ *          1. 不需要常常被 render 的元件或 Function
  *          2. 執行速度慢的 Function  
  * useCallback Returns a memoized callback. 也就是 dependencies 沒有改變的情況下，把某個 function 保存下來
  *      1.useCallback(fn, deps) 等同於 useMemo(() => fn, deps)
@@ -34,20 +34,23 @@ const UseMemo = () => {
     //Components dependce change render do this(包括第一次)
     useEffect(() => { console.log('UseMemo-Components dependce change render do this') }, [count])
     //Components onmount
-    useEffect(() => { return ()=> {
-        console.log('Components onmount')
-    } }, [])
+    useEffect(() => {
+        return () => {
+            console.log('UseMemo didmount')
+        }
+    }, [])
 
     console.log('return-UseMemo')
-    //console.log(memoizedValue);
-    //console.log(memoizedCallback);
+    console.log({memoizedValue, memoizedCallback});
+
     return (
-        <>  
+        <>
             <h1>useMemo & useCallback</h1>
-            <p>
-                <button onClick={() => setCount(count + 1)}>Click</button>
-            </p>
-            {/* <UseMemoChild count={count}/> */}
+            <button className='button' onClick={() => setCount(count + 1)}>點擊父組件 + 1</button>
+            <div>
+                父counter : {count}
+            </div>
+            <UseMemoChild count={count} />
         </>
 
 
@@ -68,6 +71,9 @@ function UseMemoChild(props) {
     useEffect(() => { console.log('UseMemoChild-Components dependce change render do this') }, [props.count])
     console.log('return-UseMemoChild')
     return (
-        <div onClick={() => setChildCount(childCount + 1)}>UseMemoChild {childCount}</div>
+        <>
+            <button className='button' onClick={() => setChildCount(childCount + 1)}>點擊子組件 + 1</button>
+            <div> 子counter : {childCount} </div>
+        </>
     )
 }
