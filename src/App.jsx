@@ -1,13 +1,10 @@
 import React from 'react'
-import {Routes, Route, Link} from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import Expenses from './pages/Expenses.jsx'
 import Invoices from './pages/Invoices/Invoices.jsx'
 import InvoicesDetail from './pages/Invoices/InvoicesDetail.jsx'
 import Notfound from './pages/NotFound.jsx'
 import Book from './concepts/demo/Book.jsx'
-
-
-
 
 
 /**
@@ -23,40 +20,40 @@ import Book from './concepts/demo/Book.jsx'
 export default function App() {
   return (
     <div>
-        <h1>Bookkeeper</h1>
-        <nav>
-          <Link to="/" className="m-5">Home</Link>
-          <Link to="/invoices" className="m-5">Invoices</Link>
-          <Link to="/expenses" className="m-5">Expenses</Link>
-        </nav>
-        <Routes>
-            <Route path="/" element={<Home />} />       
-            <Route path="expenses" element={<Expenses/>}/>
-            {/* Invoices使用嵌套路由 */}           
-            <Route path="invoices" element={<Invoices/>}>
-              <Route index
-                element={
-                  <main className="p-5">
-                    <p>Select an invoice</p>
-                  </main>
-                }
-              />
-              {/* {路由組件傳參數:invoiceId} */}
-              <Route path=":invoiceId" element={<InvoicesDetail/>}/>
-            </Route>
-            {/* 星號代表上述沒匹配則匹被這個路由組件 */}
-            <Route path="*" element={<Notfound/>}/>     
-        </Routes>
-        
+      <h1>Bookkeeper</h1>
+      <nav>
+        <Link to="/" className="m-5">Home</Link>
+        <Link to="/invoices" className="m-5">Invoices</Link>
+        <Link to="/expenses" className="m-5">Expenses</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="expenses" element={<Expenses />} />
+        {/* Invoices使用嵌套路由 */}
+        <Route path="invoices" element={<Invoices />}>
+          <Route index
+            element={
+              <main className="p-5">
+                <p>Select an invoice</p>
+              </main>
+            }
+          />
+          {/* {路由組件傳參數:invoiceId} */}
+          <Route path=":invoiceId" element={<InvoicesDetail />} />
+        </Route>
+        {/* 星號代表上述沒匹配則匹被這個路由組件 */}
+        <Route path="*" element={<Notfound />} />
+      </Routes>
+
     </div>
   )
 }
 
-const Home = ()=>{
-  return(
+const Home = () => {
+  return (
     <>
       <h1 className="mt-5">This is Home</h1>
-      <Book/>
+      <Book />
     </>
   )
 }

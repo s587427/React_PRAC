@@ -10,6 +10,8 @@ import ReactHookform from "./concepts/lib/React-hook-form.jsx";
 import UseMemo from './concepts/hooks/UseMemo.jsx';
 import UseRef from './concepts/hooks/UseRef.jsx';
 import UseReducer from './concepts/hooks/UseReducer.jsx';
+import Myckedtior from "./components/ckedtior/index.jsx";
+//import ClassicEditorTest from "./components/ckedtior/ClassicEditorTest.jsx";
 
 const runenvirement = process.env.NODE_ENV
 const rootElement = document.getElementById('root');
@@ -19,12 +21,17 @@ const root = createRoot(rootElement);
 root.render(
     <Provider store={store}>
         <BrowserRouter>
+
             <>
-                {/* <App/> */}
-                {/* <ReactHookform/> */}
-                <UseMemo />
-                {/* <UseRef />
-                <UseReducer/> */}
+                <div style={{ padding: '48px' }}>
+                    {/* <App/> */}
+                    {/* <ReactHookform/> */}
+                    {/* <UseMemo /> */}
+                    {/* <UseRef />
+                    <UseReducer/> */}
+                    <Myckedtior />
+                    {/* <ClassicEditorTest /> */}
+                </div>
             </>
         </BrowserRouter>
     </Provider>
